@@ -356,6 +356,7 @@ namespace sio
         NULL_GUARD(m_client);
         if(m_connected)
         {
+            m_client->on_socket_closed(m_nsp);
             m_connected = false;
 			std::lock_guard<std::mutex> guard(m_packet_mutex);
             while (!m_packet_queue.empty()) {
